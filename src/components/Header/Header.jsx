@@ -43,7 +43,7 @@ function Header() {
               (< X name="close" color="#2A254B"/>
               )}
           </div>
-          <div className={`flex justify-between pt-10 md:flex md:py-0 md:gap-14 md:items-center  absolute z-[-1] md:relative  ${open ? "" : "relative z-1 "}
+          <div className={`flex justify-between pt-10  sm:hidden  md:flex md:py-0 md:gap-14 md:items-center   ${open ? "hidden" : "flex "}
             `}>
             <ul className='flex flex-col gap-3 md:flex-row md:items-center md:gap-8'>
               {Links.map((link) => { return <li key={link.name} className='font-medium text-lightpurple text-nowrap'><NavLink to={link.path}>{link.name}</NavLink></li> })}
