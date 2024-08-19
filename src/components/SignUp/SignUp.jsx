@@ -67,11 +67,11 @@ const SignUp = () => {
 
     <>
       <section>
-        <div className="grid grid-cols-1 sm:grid-cols-2  ">
-          <div className="w-full lg:order-none order-2">
+        <div className="sm:grid sm:grid-cols-2  ">
+          <div className="w-full  lg:order-none order-2 hidden sm:block">
             <img src="./Images/banner1.png" alt="" className="h-screen sm:w-full" />
           </div>
-          <form className="flex flex-col gap-6  justify-center xl:w-[50%] mx-auto px-3 py-10 sm:py-0">
+          <form className="flex flex-col gap-6  justify-center w-[90%] md:w-[70%] xl:w-[50%] mx-auto px-3 py-10 sm:py-0 h-screen sm:h-auto">
             <h2 className="text-black text-3xl font-semibold">Create an Account</h2>
             <h2>Enter your details below</h2>
             <div className="flex flex-col gap-8">
