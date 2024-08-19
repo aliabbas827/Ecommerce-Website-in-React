@@ -78,7 +78,7 @@ const Login = () => {
                     <img src="./Images/banner2.png" alt="" className=" h-screen sm:w-full" />
                 </div>
                 <form className="flex flex-col gap-6  justify-center xl:w-[50%] mx-auto px-3 py-10 sm:py-0">
-                    <h2 className="text-black text-3xl font-semibold">Log in to Exclusive</h2>
+                    <h2 className="text-black text-3xl font-semibold">Log in to Avion</h2>
                     <h2>Enter your details below</h2>
                     <div className="flex flex-col gap-8">
                         <input
