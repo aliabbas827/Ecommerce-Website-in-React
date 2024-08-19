@@ -76,17 +76,11 @@ function Header() {
   ];
 
 
-  if (!user) {
-    Links.push({ name: "Login", path: "/login" })
-    Links.push({ name: "Signup", path: "/sign-up" })
-    Links.splice(0, 3)
-  }
-
 
   return (
     <>
       <Toaster position="top-center" reverseOrder={false} />
-      <header>
+      {user && (<header>
         <div className='container py-7 md:flex justify-between items-center'>
           <div>
             <Link to="/"><img src="/Images/Avion.png" alt="" width={80} /></Link>
@@ -107,7 +101,7 @@ function Header() {
             <ul className='flex flex-col gap-3 md:flex-row md:items-center md:gap-8'>
               {Links.map((link) => { return <li key={link.name} className='font-medium text-lightpurple text-nowrap'><NavLink to={link.path}>{link.name}</NavLink></li> })}
             </ul>
-            {user && (<div className='flex gap-6 items-center'>
+            <div className='flex gap-6 items-center'>
               <button><Search size={20} color="#2A254B" /></button>
               <NavLink to="basket"><ShoppingCart size={20} color="#2A254B" /></NavLink>
               <DropdownMenu>
@@ -139,12 +133,10 @@ function Header() {
                   </ul>
                 </DropdownMenuContent>
               </DropdownMenu>
-            </div>)} 
+            </div>
           </div>
 
         </div>
-
-      {user && ( <>
         <div className='bg-lightgray py-5 hidden lg:block'>
           <ul className='flex justify-center gap-12'>
             {products.map((product) => {
@@ -167,8 +159,8 @@ function Header() {
             {products.map((product) => { return <SwiperSlide key={product.name} className='font-medium text-lightpurple text-nowrap text-center'><NavLink to="all-product">{product.name}</NavLink></SwiperSlide> })}
           </Swiper>
         </div>
-      </>   )}
       </header>
+      )}
     </>
 
   )
