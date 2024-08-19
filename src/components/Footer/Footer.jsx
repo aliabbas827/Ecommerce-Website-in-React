@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import { useUser } from "@/context/UserProvider";
 
 function Footer() {
-
+  const { user} = useUser();
   return (
     <>
-      <footer>
+      {user && ( <footer>
         <div className='bg-darkprimary'>
           <div className='container grid grid-cols-1  md:grid-cols-2 lg:grid-cols-4 py-20 border-b-2 gap-11 border-lightpurple'>
             <div className='flex flex-col gap-4'>
@@ -68,7 +69,7 @@ function Footer() {
         </div>
 
       </footer>
-
+      )}
     </>
   )
 }

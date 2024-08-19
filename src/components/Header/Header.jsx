@@ -24,7 +24,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { signOut, onAuthStateChanged } from "firebase/auth";
-import {toast, Toaster} from "react-hot-toast";
+import { toast, Toaster } from "react-hot-toast";
 import { useUser } from "@/context/UserProvider";
 
 
@@ -72,16 +72,9 @@ function Header() {
     { name: "Profile", link: "/", icon: <User className="w-5" /> },
     { name: "Billing", link: "/", icon: <CreditCard className="mr-2 h-4 w-4" /> },
     { name: "Settings", link: "/", icon: <Settings className="mr-2 h-4 w-4" /> },
+    {name: "Logout",link: "#",icon: <LogOut className="mr-2 h-4 w-4" />,onClick: handleSignOut,}
   ];
 
-  if (user) {
-    dropDownItems.push({
-      name: "Logout",
-      link: "#",
-      icon: <LogOut className="mr-2 h-4 w-4" />,
-      onClick: handleSignOut,
-    });
-  }
 
   if (!user) {
     Links.push({ name: "Login", path: "/login" })
@@ -92,7 +85,7 @@ function Header() {
 
   return (
     <>
-     <Toaster position="top-center" reverseOrder={false} />
+      <Toaster position="top-center" reverseOrder={false} />
       <header>
         <div className='container py-7 md:flex justify-between items-center'>
           <div>
@@ -114,7 +107,7 @@ function Header() {
             <ul className='flex flex-col gap-3 md:flex-row md:items-center md:gap-8'>
               {Links.map((link) => { return <li key={link.name} className='font-medium text-lightpurple text-nowrap'><NavLink to={link.path}>{link.name}</NavLink></li> })}
             </ul>
-            <div className='flex gap-6 items-center'>
+            {user && (<div className='flex gap-6 items-center'>
               <button><Search size={20} color="#2A254B" /></button>
               <NavLink to="basket"><ShoppingCart size={20} color="#2A254B" /></NavLink>
               <DropdownMenu>
@@ -146,10 +139,12 @@ function Header() {
                   </ul>
                 </DropdownMenuContent>
               </DropdownMenu>
-            </div>
+            </div>)} 
           </div>
 
         </div>
+
+      {user && ( <>
         <div className='bg-lightgray py-5 hidden lg:block'>
           <ul className='flex justify-center gap-12'>
             {products.map((product) => {
@@ -172,6 +167,7 @@ function Header() {
             {products.map((product) => { return <SwiperSlide key={product.name} className='font-medium text-lightpurple text-nowrap text-center'><NavLink to="all-product">{product.name}</NavLink></SwiperSlide> })}
           </Swiper>
         </div>
+      </>   )}
       </header>
     </>
 
