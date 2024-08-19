@@ -32,6 +32,7 @@ module.exports = {
         lightgray: "#f9f9f9",
         bordergray:"#ebe8f4",
         borderdark: "#cac6da",
+        button1:"#494465",
 
         primary: {
           DEFAULT: "hsl(var(--primary))",

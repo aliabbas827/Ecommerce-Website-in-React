@@ -1,6 +1,6 @@
 import { Search, ShoppingCart, CircleUser, Menu, X } from 'lucide-react'
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
@@ -30,7 +30,7 @@ function Header() {
       <header>
         <div className='container py-7 md:flex justify-between items-center'>
           <div>
-            <img src="/Images/Avion.png" alt="" width={80} />
+            <Link to="/"><img src="/Images/Avion.png" alt="" width={80} /></Link>
           </div>
           <div
             className="absolute right-8 top-[4.6%] text-2xl lg:hidden md:hidden"
@@ -50,7 +50,7 @@ function Header() {
             </ul>
             <div className='flex gap-6 items-center'>
               <button><Search size={20} color="#2A254B" /></button>
-              <NavLink><ShoppingCart size={20} color="#2A254B" /></NavLink>
+              <NavLink to="basket"><ShoppingCart size={20} color="#2A254B" /></NavLink>
               <button><CircleUser size={20} color="#2A254B" /></button>
             </div>
           </div>
