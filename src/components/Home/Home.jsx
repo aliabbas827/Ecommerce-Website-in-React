@@ -1,15 +1,29 @@
-import React from 'react'
+import { useState, useEffect } from "react";
+import { Toaster } from "react-hot-toast";
 import Card from '../Product-card/Card'
 import { Link } from 'react-router-dom'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import Brand from '../Brand-different/Brand';
-
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../firebase/firebase";
 function Home() {
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+
+    return () => unsubscribe();
+  }, []);
   return (
     <>
       <main>
-        <section>
+      <Toaster position="top-center" reverseOrder={false} />
+
+       {user ? 
+       <>
+          <section>
           <div className='md:container flex justify-center  md:my-16'>
             <div className='bg-darkprimary  flex flex-col justify-around  xl:w-2/3'>
               <div className='flex flex-col w-5/6 px-3 py-10  xl:w-4/5 md:py-10 md:px-14 md:gap-8'>
@@ -136,6 +150,8 @@ function Home() {
             </div>
           </div>
         </section>
+       </> : null}
+      
       </main>
 
     </>
